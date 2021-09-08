@@ -1,6 +1,7 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const port = 8081;
+const port = 8080;
+
 module.exports = {
   mode: "development",
   output: {
@@ -27,10 +28,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "sub_a",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./SubAApp": "./src/index",
+      name: "host",
+      remotes: {
+        subA: "sub_a@http://localhost:8081/remoteEntry.js",
       },
     }),
     new HtmlWebpackPlugin({
