@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from 'react';
 
-const SubAAppLazy = lazy(() => import("./SubAApp"));
+const SubAAppLazy = lazy(() => import('./SubAApp'));
 
 const App = () => (
   <Suspense fallback={<div>Loading...</div>}>

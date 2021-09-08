@@ -1,8 +1,8 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const port = 8081;
 module.exports = {
-  mode: "development",
+  mode: 'development',
   output: {
     publicPath: `http://localhost:${port}/`,
   },
@@ -16,10 +16,10 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime'],
           },
         },
       },
@@ -27,14 +27,14 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "sub_a",
-      filename: "remoteEntry.js",
+      name: 'sub_a',
+      filename: 'remoteEntry.js',
       exposes: {
-        "./SubAApp": "./src/index",
+        './SubAApp': './src/index',
       },
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
   ],
 };
